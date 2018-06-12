@@ -15,15 +15,22 @@ public class RotateArray {
 	 *            - Array of command line arguments
 	 */
 	public static void main(String[] args) {
+		System.out.println("Rotate array by method 1:");
 		int[] arr = new int[] { 1, 2, 3, 4, 5, 6, 7 };
 		display(arr);
 		// Rotate the array by two numbers
 		rotate1(arr, arr.length, 2);
 		display(arr);
+		System.out.println("\nRotate array by method 2:");
+		arr = new int[] { 1, 2, 3, 4, 5, 6, 7 };
+		display(arr);
+		// Rotate the array by two numbers
+		rotate2(arr, arr.length, 2);
+		display(arr);
 	}
 
 	/**
-	 * Display array elements
+	 * Display array elements.Time complexity is O(n).
 	 * 
 	 * @param arr
 	 *            - Array of integers
@@ -66,6 +73,31 @@ public class RotateArray {
 		for (int i = 0; i < temp.length; i++) {
 			arr[j] = temp[i];
 			j++;
+		}
+	}
+
+	/**
+	 * Rotate the array
+	 * 
+	 * @param arr
+	 *            - Array to be rotated
+	 * @param n
+	 *            - Length of array
+	 * @param d
+	 *            - Number by which array is rotated
+	 */
+	private static void rotate2(int[] arr, int n, int d) {
+		if (null == arr || n <= 0 || d <= 0) {
+			System.out.println("Invalid input");
+			return;
+		}
+		for (int i = 0; i < d; i++) {
+			int num = arr[0];
+			int j = 0;
+			for (; j < n - 1; j++) {
+				arr[j] = arr[j + 1];
+			}
+			arr[j] = num;
 		}
 	}
 
